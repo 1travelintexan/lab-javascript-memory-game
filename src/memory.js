@@ -7,13 +7,14 @@ class MemoryGame {
   }
 
   shuffleCards() {
+    let copyCards = [...this.cards];
     let shuffled = [];
     for (let i = 0; i < this.cards.length; i++) {
-      let randomIndex = Math.floor(Math.random() * this.cards.length);
-      shuffled.push(this.cards[randomIndex]);
-      this.cards.slice(randomIndex, 1);
+      let randomIndex = Math.floor(Math.random() * copyCards.length);
+      shuffled.push(copyCards[randomIndex]);
+      copyCards.splice(randomIndex, 1);
     }
-    return shuffled;
+    this.cards = shuffled;
   }
 
   checkIfPair(card1, card2) {
